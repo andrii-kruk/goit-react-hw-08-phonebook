@@ -4,7 +4,6 @@ import {
   StyledRegisterItem,
   StyledRegisterButton,
 } from './RegisterForm.styled';
-import { Link } from 'react-router-dom';
 
 const formItemLayout = {
   labelCol: {
