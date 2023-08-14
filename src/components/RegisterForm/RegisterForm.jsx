@@ -4,6 +4,8 @@ import {
   StyledRegisterItem,
   StyledRegisterButton,
 } from './RegisterForm.styled';
+import { useDispatch } from 'react-redux';
+import { registerUserThunk } from 'redux/reducers/authReducer';
 
 const formItemLayout = {
   labelCol: {
@@ -39,8 +41,14 @@ const tailFormItemLayout = {
 
 const RegisterForm = () => {
   const [form] = Form.useForm();
-  const onFinish = values => {
-    console.log('Received values of form: ', values);
+  const dispatch = useDispatch();
+
+  const onFinish = () => {
+    const userData = form.getFieldsValue();
+
+    dispatch(registerUserThunk(userData));
+
+    form.resetFields();
   };
 
   return (
@@ -61,6 +69,10 @@ const RegisterForm = () => {
           {
             required: true,
             message: 'Please input your name!',
+          },
+          {
+            min: 2,
+            message: 'Your name should be more then two symbols!',
           },
         ]}
       >
@@ -92,6 +104,11 @@ const RegisterForm = () => {
             required: true,
             message: 'Please input your password!',
           },
+
+          {
+            min: 7,
+            message: 'Your password should be more then two symbols!',
+          },
         ]}
         hasFeedback
       >
@@ -100,9 +117,8 @@ const RegisterForm = () => {
 
       <StyledRegisterItem {...tailFormItemLayout}>
         <StyledRegisterButton type="primary" htmlType="submit">
-          Register
+          Sign Up
         </StyledRegisterButton>
-        {/* Or <Link to="/login">sign in.</Link> */}
       </StyledRegisterItem>
     </StyledRegisterForm>
   );

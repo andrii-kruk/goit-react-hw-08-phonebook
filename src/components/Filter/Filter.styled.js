@@ -1,12 +1,15 @@
-import { Input } from 'antd';
+import { Button, Input } from 'antd';
 import styled from 'styled-components';
+
+export const StyledFilterWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+`;
 
 export const StyledFilter = styled(Input)`
   display: block;
   width: 320px;
-
-  margin-left: auto;
-  margin-right: auto;
 
   margin-bottom: 24px;
 `;

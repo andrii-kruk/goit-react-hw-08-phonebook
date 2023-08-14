@@ -1,14 +1,31 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Layout = lazy(() => import('./Layout/Layout'));
+import {
+  refreshUserThunk,
+  selectUserLoggedIn,
+  selectUserToken,
+} from 'redux/reducers/authReducer';
+
+import Layout from './Layout/Layout';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
-const ProfilePage = lazy(() => import('pages/ProfilePage/ProfilePage'));
 
 const App = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(selectUserToken);
+
+  useEffect(() => {
+    if (!token) return;
+
+    dispatch(refreshUserThunk());
+  }, [token, dispatch]);
+
   return (
     <>
       <Routes>
@@ -16,8 +33,15 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="contacts" element={<ContactsPage />} />
-          <Route path="profile" element={<ProfilePage />} />
+
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute redirectTo="/login">
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </>
