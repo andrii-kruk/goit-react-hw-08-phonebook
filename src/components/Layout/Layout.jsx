@@ -3,13 +3,14 @@ import { Outlet } from 'react-router-dom';
 import AppBar from 'components/AppBar/AppBar';
 import Footer from 'components/Footer/Footer';
 import { StyledContainer } from 'components/Container/Container.styled';
+import Loader from 'components/Loader/Loader';
 
 const Layout = () => {
   return (
     <>
       <AppBar />
       <StyledContainer>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </StyledContainer>

@@ -1,23 +1,36 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  StyledHeaderWrapper,
-  StyledNav,
-  StyledNavLink,
-  StyledProfileLink,
-} from './AppBar.styled';
+  logoutUserThunk,
+  selectUserLoggedIn,
+  selectUserToken,
+} from 'redux/reducers/authReducer';
+
+import { StyledHeaderWrapper, StyledNav, StyledNavLink } from './AppBar.styled';
 import { StyledContainer } from 'components/Container/Container.styled';
+import { Button } from 'antd';
 
 const AppBar = () => {
+  const isLoggedIn = useSelector(selectUserLoggedIn);
+  const dispatch = useDispatch();
   return (
     <header>
       <StyledContainer>
         <StyledHeaderWrapper>
           <StyledNav>
-            <StyledNavLink to="register">Register</StyledNavLink>
-            <StyledNavLink to="login">Login</StyledNavLink>
-            <StyledNavLink to="contacts">Contacts</StyledNavLink>
+            <StyledNavLink to="/">Home</StyledNavLink>
+            {!isLoggedIn ? (
+              <>
+                <StyledNavLink to="register">Register</StyledNavLink>
+                <StyledNavLink to="login">Login</StyledNavLink>
+              </>
+            ) : (
+              <StyledNavLink to="contacts">Contacts</StyledNavLink>
+            )}
           </StyledNav>
 
-          <StyledProfileLink to="/profile">Profile</StyledProfileLink>
+          {isLoggedIn && (
+            <Button onClick={() => dispatch(logoutUserThunk())}>Log Out</Button>
+          )}
         </StyledHeaderWrapper>
       </StyledContainer>
     </header>

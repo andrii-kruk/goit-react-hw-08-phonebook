@@ -1,14 +1,26 @@
 import React from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Form, Input } from 'antd';
-import { StyledButton, StyledForm } from './LoginForm.styled';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Form, Input } from 'antd';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+
+import { StyledButton, StyledForm } from './LoginForm.styled';
+import { loginUserThunk } from 'redux/reducers/authReducer';
+
 const LoginForm = () => {
-  const onFinish = values => {
-    console.log('Received values of form: ', values);
+  const [form] = Form.useForm();
+  const dispatch = useDispatch();
+
+  const onFinish = () => {
+    const userData = form.getFieldsValue();
+    dispatch(loginUserThunk(userData));
+
+    form.resetFields();
   };
+
   return (
     <StyledForm
+      form={form}
       name="normal_login"
       className="login-form"
       initialValues={{

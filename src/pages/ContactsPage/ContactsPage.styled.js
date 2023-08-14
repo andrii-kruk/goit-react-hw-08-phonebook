@@ -7,7 +7,7 @@ export const StyledSection = styled.section`
 
 export const StyledTitle = styled.h1`
   font-weight: 500;
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.2;
   letter-spacing: 0.04em;
   text-align: center;
@@ -15,11 +15,19 @@ export const StyledTitle = styled.h1`
 `;
 
 export const StyledFormWrapper = styled.div`
-  padding: 24px 48px;
+  width: 400px;
 `;
 
 export const StyledContactsWrapper = styled.div`
-  padding: 24px 48px;
+  width: 650px;
+`;
+
+export const StyledListWrapper = styled.div`
+  width: 400px;
+  height: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
 `;
 
 export const StyledParagraph = styled.p`
@@ -31,4 +39,8 @@ export const StyledParagraph = styled.p`
   letter-spacing: 0.03em;
 
   margin-bottom: 12px;
+`;
+
+export const StyledPageWrapper = styled.div`
+  display: flex;
 `;

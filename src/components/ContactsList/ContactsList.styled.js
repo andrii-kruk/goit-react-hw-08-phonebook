@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledList = styled.ul`
-  width: 800px;
   margin-left: auto;
   margin-right: auto;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
 
-  row-gap: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;

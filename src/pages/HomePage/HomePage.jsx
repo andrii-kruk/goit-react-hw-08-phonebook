@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
   StyledDescription,
   StyledItem,
@@ -23,11 +22,6 @@ const HomePage = () => {
           </StyledItem>
           <StyledItem>And much more!</StyledItem>
         </StyledList>
-
-        <StyledDescription>
-          You can <Link to="register">register</Link> or 
-          <Link to="login"> login</Link>.
-        </StyledDescription>
       </StyledContainer>
     </StyledSection>
   );

@@ -29,10 +29,10 @@ export const StyledNavLink = styled(NavLink)`
   transition: 250ms;
 
   &.active {
-    color: darkslateblue;
+    color: #3b3b3b;
   }
   &:hover {
-    color: darkslateblue;
+    color: #3b3b3b;
   }
 `;
 
