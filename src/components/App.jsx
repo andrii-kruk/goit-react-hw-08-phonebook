@@ -2,11 +2,7 @@ import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  refreshUserThunk,
-  selectUserLoggedIn,
-  selectUserToken,
-} from 'redux/reducers/authReducer';
+import { refreshUserThunk, selectUserToken } from 'redux/reducers/authReducer';
 
 import Layout from './Layout/Layout';
 import PrivateRoute from './PrivateRoute/PrivateRoute';

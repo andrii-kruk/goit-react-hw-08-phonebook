@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   logoutUserThunk,
   selectUserLoggedIn,
-  selectUserToken,
 } from 'redux/reducers/authReducer';
 
 import { StyledHeaderWrapper, StyledNav, StyledNavLink } from './AppBar.styled';

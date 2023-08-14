@@ -1,11 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { StyledButton, StyledListItem } from './ContactsItem.styled';
 import { deleteContact } from 'redux/reducers/contactsReducer';
-import { useState } from 'react';
 
 const ContactsItem = ({ name, number, id, onClear }) => {
   const dispatch = useDispatch();
-  const [filter, setFilter] = useState('');
 
   const onRemoveBtnClick = id => {
     removeContactFromList(id);
